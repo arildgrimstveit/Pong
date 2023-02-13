@@ -12,6 +12,6 @@ public class DesktopLauncher {
 		config.useVsync(true);
 		config.setTitle("Pong");
 		config.setWindowedMode(960, 640);
-		new Lwjgl3Application(new Pong(), config);
+		new Lwjgl3Application(Pong.getINSTANCE(), config);
 	}
 }

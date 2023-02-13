@@ -10,12 +10,15 @@ import com.badlogic.gdx.utils.ScreenUtils;
 
 public class Pong extends Game {
 
-	public static Pong INSTANCE;
+	private static Pong INSTANCE;
 	private int screenWidth, screenHeight;
 	private OrthographicCamera orthographicCamera;
 
-	public Pong(){
-		INSTANCE = this;
+	public static Pong getINSTANCE() {
+		if(INSTANCE==null){
+			INSTANCE = new Pong();
+		}
+		return INSTANCE;
 	}
 
 	public void create () {

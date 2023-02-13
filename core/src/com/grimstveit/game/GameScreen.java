@@ -36,18 +36,18 @@ public class GameScreen extends ScreenAdapter {
 
     public GameScreen(OrthographicCamera camera){
         this.camera = camera;
-        this.camera.position.set(new Vector3(Pong.INSTANCE.getScreenWidth() / 2, Pong.INSTANCE.getScreenHeight() / 2, 0));
+        this.camera.position.set(new Vector3(Pong.getINSTANCE().getScreenWidth() / 2, Pong.getINSTANCE().getScreenHeight() / 2, 0));
         this.batch = new SpriteBatch();
         this.world = new World(new Vector2(0,0), false);
         this.box2DDebugRenderer = new Box2DDebugRenderer();
         this.gameContactListener = new GameContactListener(this);
         this.world.setContactListener((this.gameContactListener));
 
-        this.player = new Player(16,Pong.INSTANCE.getScreenHeight() / 2, this);
-        this.playerAI = new PlayerAI(Pong.INSTANCE.getScreenWidth() - 16, Pong.INSTANCE.getScreenHeight() / 2, this);
+        this.player = new Player(16,Pong.getINSTANCE().getScreenHeight() / 2, this);
+        this.playerAI = new PlayerAI(Pong.getINSTANCE().getScreenWidth() - 16, Pong.getINSTANCE().getScreenHeight() / 2, this);
         this.ball = new Ball(this);
         this.wallTop = new Wall(32, this);
-        this.wallBottom = new Wall(Pong.INSTANCE.getScreenHeight() - 32, this);
+        this.wallBottom = new Wall(Pong.getINSTANCE().getScreenHeight() - 32, this);
         this.numbers = loadTextureSprite("numbers.png", 10);
     }
 
@@ -87,12 +87,12 @@ public class GameScreen extends ScreenAdapter {
         this.wallTop.render(batch);
         this.wallBottom.render(batch);
 
-        drawNumbers(batch, player.getScore(), 64, Pong.INSTANCE.getScreenHeight() - 55, 30 ,42);
-        drawNumbers(batch, playerAI.getScore(), Pong.INSTANCE.getScreenWidth() - 96, Pong.INSTANCE.getScreenHeight() - 55, 30, 42);
+        drawNumbers(batch, player.getScore(), 64, Pong.getINSTANCE().getScreenHeight() - 55, 30 ,42);
+        drawNumbers(batch, playerAI.getScore(), Pong.getINSTANCE().getScreenWidth() - 96, Pong.getINSTANCE().getScreenHeight() - 55, 30, 42);
 
         batch.end();
 
-        this.box2DDebugRenderer.render(world, camera.combined.scl(Const.PPM));
+        // this.box2DDebugRenderer.render(world, camera.combined.scl(Const.PPM));
     }
 
     private void drawNumbers(SpriteBatch batch, int number, float x, float y, float width, float height){

@@ -19,8 +19,8 @@ public class Ball {
     private Texture texture;
 
     public Ball(GameScreen gameScreen) {
-        this.x = Pong.INSTANCE.getScreenWidth() / 2;
-        this.y = Pong.INSTANCE.getScreenHeight() / 2;
+        this.x = Pong.getINSTANCE().getScreenWidth() / 2;
+        this.y = Pong.getINSTANCE().getScreenHeight() / 2;
         this.speed = 5;
         this.velX = getRandomDirection();
         this.velY = getRandomDirection();
@@ -47,7 +47,7 @@ public class Ball {
             gameScreen.getPlayerAI().score();
             reset();
         }
-        if(x > Pong.INSTANCE.getScreenWidth()){
+        if(x > Pong.getINSTANCE().getScreenWidth()){
             gameScreen.getPlayer().score();
             reset();
         }
@@ -58,7 +58,7 @@ public class Ball {
         this.velX = this.getRandomDirection();
         this.velY = this.getRandomDirection();
         this.speed = 5;
-        this.body.setTransform(Pong.INSTANCE.getScreenWidth() / 2 / Const.PPM, Pong.INSTANCE.getScreenHeight() / 2 / Const.PPM, 0);
+        this.body.setTransform(Pong.getINSTANCE().getScreenWidth() / 2 / Const.PPM, Pong.getINSTANCE().getScreenHeight() / 2 / Const.PPM, 0);
     }
 
     public void render(SpriteBatch batch) {
